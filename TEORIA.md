@@ -1,4 +1,4 @@
-# Teoría de Compiladores: Fundamentos del Parser LL(1)
+# Teoría de lenguajes de programación: Fundamentos del parser LL(1)
 
 ## Introducción: ¿Qué es un compilador?
 
@@ -23,7 +23,7 @@ Un compilador hace algo muy similar con el código:
 
 ---
 
-## Fase 1: Análisis Léxico (Lexer)
+## Fase 1: Análisis léxico (Lexer)
 
 ### ¿Qué hace el analizador léxico?
 
@@ -75,7 +75,7 @@ Carácter: '2' → Continúa: NÚMERO → Token: NUMBER(42)
 
 ---
 
-## Fase 2: Análisis Sintáctico (Parser)
+## Fase 2: Análisis sintáctico (Parser)
 
 ### ¿Qué hace el parser?
 
@@ -104,15 +104,15 @@ Factor → Número | Identificador | '(' Expresión ')'
 - **(1)**: Necesita ver solo 1 token hacia adelante para decidir qué regla aplicar
 
 **Ventajas del LL(1)**:
-- ✅ Eficiente (análisis en tiempo lineal)
-- ✅ Manejo de errores predecible
-- ✅ Fácil de implementar y entender
-- ✅ Permite recuperación de errores
+- Eficiente (análisis en tiempo lineal)
+- Manejo de errores predecible
+- Fácil de implementar y entender
+- Permite recuperación de errores
 
 **Limitaciones del LL(1)**:
-- ❌ No todas las gramáticas son LL(1)
-- ❌ Problemas con recursión izquierda
-- ❌ Conflictos en algunas construcciones ambiguas
+- No todas las gramáticas son LL(1)
+- Problemas con recursión izquierda
+- Conflictos en algunas construcciones ambiguas
 
 ### Ejemplo: Parsing de una expresión
 
@@ -186,10 +186,10 @@ FuncDecl(name="suma", ret_type=int)
 3. **Expresiones**: Operaciones, llamadas a función, variables, números
 
 **Ventajas del AST**:
-- 🎯 Representa la estructura lógica del programa
-- 🔄 Fácil de recorrer para análisis posteriores  
-- 🛠️ Base para optimizaciones y generación de código
-- 🐛 Útil para debugging y herramientas de desarrollo
+- Representa la estructura lógica del programa
+- Fácil de recorrer para análisis posteriores  
+- Base para optimizaciones y generación de código
+- Útil para debugging y herramientas de desarrollo
 
 ---
 
@@ -205,19 +205,19 @@ Mientras que el parser verifica la **sintaxis** (si el código está bien formad
 
 1. **Declaración de variables**: ¿Existe la variable antes de usarla?
    ```c
-   x = 5;        // ❌ Error: 'x' no declarada
-   int x = 5;    // ✅ OK: 'x' se declara antes de usar
+   x = 5;        // Error: 'x' no declarada
+   int x = 5;    // OK: 'x' se declara antes de usar
    ```
 
 2. **Tipos compatibles**: ¿Son los tipos compatibles en las operaciones?
    ```c
    int x = 5;
-   x = x + "hola";  // ❌ Error: no se puede sumar int + string
+   x = x + "hola";  // Error: no se puede sumar int + string
    ```
 
 3. **Llamadas a función**: ¿Existe la función? ¿Número correcto de parámetros?
    ```c
-   suma(1, 2, 3);   // ❌ Error si suma() espera solo 2 parámetros
+   suma(1, 2, 3);   // Error si suma() espera solo 2 parámetros
    ```
 
 4. **Ámbitos (Scopes)**: ¿La variable es visible en este contexto?
@@ -225,7 +225,7 @@ Mientras que el parser verifica la **sintaxis** (si el código está bien formad
    {
        int x = 5;
    }
-   printf("%d", x);  // ❌ Error: 'x' no visible fuera del bloque
+   printf("%d", x);  // Error: 'x' no visible fuera del bloque
    ```
 
 ### Tabla de símbolos
@@ -252,10 +252,10 @@ int funcion(int param) {    // Ámbito: local a funcion
     
     if (param > 0) {
         int if_var = 3;     // Ámbito: solo dentro del if
-        return local_var + if_var;  // ✅ Todas visibles aquí
+        return local_var + if_var;  // Todas visibles aquí
     }
     
-    return if_var;          // ❌ Error: if_var no visible aquí
+    return if_var;          // Error: if_var no visible aquí
 }
 ```
 
@@ -289,7 +289,7 @@ int factorial(int n) {
 }
 ```
 
-### 1. Análisis Léxico (Tokens):
+### 1. Análisis léxico (Tokens):
 ```
 [KW_INT] [IDENT:"factorial"] [LPAREN] [KW_INT] [IDENT:"n"] [RPAREN] 
 [LBRACE] [KW_IF] [LPAREN] [IDENT:"n"] [LE] [NUMBER:1] [RPAREN] 
@@ -298,7 +298,7 @@ int factorial(int n) {
 [MINUS] [NUMBER:1] [RPAREN] [SEMI] [RBRACE]
 ```
 
-### 2. Análisis Sintáctico (AST):
+### 2. Análisis sintáctico (AST):
 ```
 Program
 └── FuncDecl(name="factorial", ret_type=TypeSpec(base="int"))
@@ -319,17 +319,17 @@ Program
                     └── args: [Binary(op="-", left=Var(name="n"), right=Number(value=1))]
 ```
 
-### 3. Análisis Semántico:
-- ✅ Función `factorial` declarada correctamente
-- ✅ Parámetro `n` de tipo `int` 
-- ✅ Variable `n` visible en toda la función
-- ✅ Llamada recursiva a `factorial` con argumento correcto
-- ✅ Tipos compatibles en todas las operaciones
-- ✅ Función retorna `int` como se declara
+### 3. Análisis semántico:
+- Función `factorial` declarada correctamente
+- Parámetro `n` de tipo `int` 
+- Variable `n` visible en toda la función
+- Llamada recursiva a `factorial` con argumento correcto
+- Tipos compatibles en todas las operaciones
+- Función retorna `int` como se declara
 
 ---
 
-## Ventajas del Análisis LL(1)
+## Ventajas del análisis LL(1)
 
 ### 1. Eficiencia
 - **Tiempo**: O(n) lineal en el tamaño de la entrada
@@ -343,8 +343,8 @@ Program
 
 **Ejemplo de recuperación de errores**:
 ```c
-int x = 5      // ❌ Falta ';'
-int y = 10;    // ✅ Continúa analizando después del error
+int x = 5      // Falta ';'
+int y = 10;    // Continúa analizando después del error
 ```
 
 ### 3. Simplicidad de implementación
@@ -446,47 +446,5 @@ LL(*): lookahead variable (ANTLR)
 
 ---
 
-## Conclusión: ¿Por qué es importante entender esto?
-
-### 1. Base teórica sólida
-Entender LL(1) te da una base sólida para:
-- 📚 Comprender otros tipos de parsers (LR, LALR, GLR)
-- 🛠️ Diseñar DSLs (Domain Specific Languages)
-- 🔧 Trabajar con herramientas de parsing existentes
-- 🎯 Debuggear problemas en compiladores y parsers
-
-### 2. Habilidades transferibles
-Los conceptos aprendidos se aplican a:
-- **Procesamiento de lenguajes naturales**
-- **Análisis de protocolos de red**
-- **Parsing de formatos de datos (JSON, XML, CSV)**
-- **Desarrollo de IDEs y herramientas de análisis de código**
-
-### 3. Pensamiento algorítmico
-El diseño de un compilador te enseña:
-- **Descomposición de problemas**: Dividir un problema complejo en fases
-- **Abstracción**: Representar conceptos complejos con estructuras simples
-- **Manejo de errores**: Diseñar sistemas robustos que fallen gracefully
-- **Optimización**: Balance entre simplicidad y eficiencia
 
 ---
-
-## Recursos para profundizar
-
-### Libros recomendados
-1. **"Compilers: Principles, Techniques, and Tools"** (Dragon Book) - Aho, Sethi, Ullman
-2. **"Modern Compiler Implementation"** - Andrew Appel  
-3. **"Language Implementation Patterns"** - Terence Parr
-
-### Herramientas para experimentar
-1. **ANTLR**: Generador de parsers con interfaz visual
-2. **Lex/Yacc**: Herramientas clásicas de Unix
-3. **PEG parsers**: Alternative moderna a parsers LL/LR
-
-### Ejercicios prácticos
-1. Extender este parser para soportar `struct`
-2. Agregar strings literales y operaciones con strings  
-3. Implementar un intérprete que ejecute el AST
-4. Generar código de tres direcciones desde el AST
-
-¡La teoría de compiladores es fascinante y tiene aplicaciones práticas en muchas áreas de la computación! 🚀
