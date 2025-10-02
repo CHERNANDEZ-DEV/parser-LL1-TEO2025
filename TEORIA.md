@@ -193,7 +193,7 @@ FuncDecl(name="suma", ret_type=int)
 
 ---
 
-## Fase 4: Análisis Semántico
+## Fase 4: Análisis semántico
 
 ### ¿Qué hace el analizador semántico?
 
@@ -275,7 +275,7 @@ Pila de ámbitos:
 
 ---
 
-## El Proceso Completo: De código a AST
+## El Proceso completo: De código a AST
 
 Veamos cómo nuestro compilador procesa un ejemplo completo:
 
@@ -354,7 +354,7 @@ int y = 10;    // Continúa analizando después del error
 
 ---
 
-## Limitaciones y Desafíos
+## Limitaciones y desafíos
 
 ### 1. Restricciones de la gramática LL(1)
 
@@ -424,7 +424,7 @@ else                    // ¿A cuál if pertenece este else?
 
 ---
 
-## Extensiones y Mejoras Posibles
+## Extensiones y mejoras posibles
 
 ### 1. LL(k) - Más lookahead
 Permitir ver k tokens hacia adelante para resolver más ambigüedades:
