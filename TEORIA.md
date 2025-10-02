@@ -410,7 +410,7 @@ else                    // ¿A cuál if pertenece este else?
 
 ---
 
-## Casos de Uso Reales
+## Casos de uso reales
 
 ### Compiladores famosos con LL(1)
 - **Pascal**: El compilador original de Pascal usaba análisis LL(1)
