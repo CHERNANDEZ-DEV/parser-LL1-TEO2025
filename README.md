@@ -267,18 +267,3 @@ int calculate() {
 2. **Análisis semántico básico**:
    - Verificación de tipos simplificada
    - Conversiones implícitas limitadas
-
-## Desarrollo y contribución
-
-### Estructura de desarrollo
-
-- Cada módulo es independiente y puede probarse por separado
-- Los tests están organizados por componente
-- El sistema usa tipado estático con `typing` para mayor claridad
-
-## Notas Técnicas
-
-- El parser utiliza análisis LL(1) con recuperación de errores
-- La tabla de símbolos soporta ámbitos anidados
-- El sistema maneja precedencia de operadores correctamente
-- El AST es inmutable y fácil de recorrer para análisis posteriores
