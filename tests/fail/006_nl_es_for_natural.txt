@@ -1,0 +1,1 @@
+for i desde 1 hasta 10

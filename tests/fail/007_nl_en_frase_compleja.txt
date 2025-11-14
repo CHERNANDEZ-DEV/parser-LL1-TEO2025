@@ -1,0 +1,11 @@
+The president of Mexico visited Argentina for a diplomatic meeting.
+Google announced new offices in Madrid last month.
+If condition then do something
+while do work
+for i from 1 to 10
+hello "world"
+a equals b
+a == b then c
+int hello world
+hello world.
+if (a and b)
